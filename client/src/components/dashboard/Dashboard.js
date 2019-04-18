@@ -2,10 +2,10 @@ import React from 'react';
 
 const Dashboard = (props) => {
     return ( <>
-        <button onClick ={props.strike}>strike</button>
-        <button onClick ={props.ball}>ball</button>
-        <button onClick ={props.foul}>foul</button>
-        <button onClick ={props.hit}>hit</button>
+        <button onClick ={props.strikeCount}>strike</button>
+        <button onClick ={props.ballCount}>ball</button>
+        <button onClick ={props.foulCount}>foul</button>
+        <button onClick ={props.hitCount}>hit</button>
     </> );
 }
  

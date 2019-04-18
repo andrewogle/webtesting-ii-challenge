@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import {render, fireEvent, cleanup} from 'react-testing-library';
 import 'jest-dom/extend-expect';
 
-import './Dashboard.js';
 import Dashboard from './Dashboard.js';
+
 
 describe('The Dashboard component',()=>{
     it('renders',()=>{
