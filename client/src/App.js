@@ -1,25 +1,56 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Display from "./components/display/Display.js";
+import Dashboard from "./components/dashboard/Dashboard.js";
+import "./App.css";
 
 class App extends Component {
+  state = {
+    balls: 0,
+    strikes: 0
+  };
+  resetHandler = event => {
+    this.setState({
+      balls: 0,
+      strikes: 0
+    });
+  };
+
+  strikeHandler = event => {
+    if (this.state.strikes < 3) {
+      this.setState(prevState => {
+        return { strikes: prevState.strikes + 1 };
+      });
+    } else {
+      this.resetHandler(event);
+    }
+  };
+  ballHandler = event => {
+    if (this.state.balls < 4) {
+      this.setState(prevState => {
+        return { balls: prevState.balls + 1 };
+      });
+    } else {
+      this.resetHandler(event);
+    }
+  
+  };
+  foulHandler = event => {
+    if (this.state.strikes < 2) {
+      this.setState(prevState => {
+        return { strikes: prevState.strikes + 1 };
+      });
+    } 
+  };
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <Display strikes={this.state.strikes} balls={this.state.balls} />
+        <Dashboard
+          strikeCount={this.strikeHandler}
+          ballCount={this.ballHandler}
+          hitCount={this.resetHandler}
+          foulCount = {this.foulHandler}
+        />
       </div>
     );
   }
